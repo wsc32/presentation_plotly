@@ -1,0 +1,42 @@
+---
+title: "Exploring the relationship between toothgrowth, supplement type and dosage"
+date: "29 August 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Summary of dataset
+This dataset contains the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods (orange juice - OJ  or vitamin C - VC). The dataset is in the form of a data frame, consisting of 3 columns: 
+
+- len: a numeric class representing the numeric tooth length, 
+
+- supp: a factor class representing the supplement type (VC or OJ) 
+
+- dose: a numeric class representing dose in milligrams/day (0.5, 1 or 2).
+
+A variety of plots will be shown in the following slides to explore the relationship between tooth growth, supplement type and the corresponding dosage. 
+
+## Scatterplot
+The scatterplot below illustrates the tooth length as a function of dosage for the two different supplement type.
+```{r scatterplot, message=FALSE, warning=FALSE}
+library(plotly)
+data(ToothGrowth)
+plot_ly(ToothGrowth, x=~dose, y=~len, type="scatter", mode="markers", color=~supp) 
+```
+
+## Histogram
+The histrogram below shows how the tooth lengths are distributed for the two different supplement types. 
+```{r histogram, message=FALSE, warning=FALSE}
+plot_ly(ToothGrowth, x=~len, type="histogram", color=~supp)
+```
+
+## Boxplot
+The boxplot below compares how the tooth lengths are distributed for the different dose levels. 
+```{r boxplot, message=FALSE, warning=FALSE}
+plot_ly(ToothGrowth, y=~len, type="box", color=~as.factor(dose))
+```
+
+## Thank you 
